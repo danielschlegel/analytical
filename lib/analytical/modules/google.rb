@@ -13,8 +13,9 @@ module Analytical
       # value: String
       # scope: 1 (visitor-level), 2 (session-level), or 3 (page-level)
       # custom_variables: Array of Objects [{:slot => 1, :key => "key1", :value => "value1", :scope => 3}, {:slot => 2, :key => "key2", :value => "value2", :scope => 1}]
-      def init_javascript(location, custom_variables=nil)
+      def init_javascript(location)
         init_location(location) do
+          custom_variables = options[:custom_variables]
           if custom_variables
             custom_variable_string = ""
             custom_variables.each do |v|
