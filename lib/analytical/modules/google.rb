@@ -28,6 +28,7 @@ module Analytical
             _gaq.push(['_setAccount', '#{options[:key]}']);
             _gaq.push(['_setDomainName', '#{options[:domain]}']);
             #{"_gaq.push(['_setAllowLinker', true]);" if options[:allow_linker]}
+            #{"_gaq.push(['_trackPageLoadTime']);" if options[:track_page_load_time]}
           #{custom_variable_string if custom_variable_string}
             _gaq.push(['_trackPageview']);
             (function() {
