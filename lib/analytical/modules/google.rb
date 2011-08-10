@@ -19,7 +19,7 @@ module Analytical
           if custom_variables
             custom_variable_string = ""
             custom_variables.each do |v|
-              custom_variable_string << "_gaq.push(['_setCustomVar', #{v[:slot]}, #{v[:key]}, #{v[:value]}, #{v[:scope]}]);"
+              custom_variable_string << custom_variable(v[:slot], v[:key], v[:value], v[:scope])
             end
           end
           js = <<-HTML
