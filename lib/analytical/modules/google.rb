@@ -3,16 +3,16 @@ module Analytical
     class Google
       include Analytical::Modules::Base
 
+       # slot: 1-5 allowed
+      # key: String
+      # value: String
+      # scope: 1 (visitor-level), 2 (session-level), or 3 (page-level)
+      # custom_variables: Array of Objects :custom_variables => [{:slot => 1, :key => "key1", :value => "value1", :scope => 3}, {:slot => 2, :key => "key2", :value => "value2", :scope => 1}]
       def initialize(options={})
         super
         @tracking_command_location = :head_append
       end
 
-      # slot: 1-5 allowed
-      # key: String
-      # value: String
-      # scope: 1 (visitor-level), 2 (session-level), or 3 (page-level)
-      # custom_variables: Array of Objects [{:slot => 1, :key => "key1", :value => "value1", :scope => 3}, {:slot => 2, :key => "key2", :value => "value2", :scope => 1}]
       def init_javascript(location)
         init_location(location) do
           custom_variables = options[:custom_variables]
