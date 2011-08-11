@@ -29,7 +29,7 @@ module Analytical
               }
             }
 
-          #{custom_variable_string if custom_variable_string}
+          #{@custom_variable_string if @custom_variable_string}
             _gaq.push(['_trackPageview']);
             (function() {
               var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
