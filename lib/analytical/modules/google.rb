@@ -56,7 +56,7 @@ module Analytical
         data = args.first || {}
         data = data[:value] if data.is_a?(Hash)
         data_string = !data.nil? ? ", #{data}" : ""
-        "_gaq.push(['_trackEvent', \"#{name}\", #{data_string} , #{args.second} ]);"
+        "_gaq.push(['_trackEvent', \"#{name}\", #{data_string} , \"test\", 1 ]);"
       end
 
     end
