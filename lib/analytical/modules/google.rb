@@ -15,13 +15,6 @@ module Analytical
 
       def init_javascript(location)
         init_location(location) do
-          custom_variables = options[:custom_variables]
-          if custom_variables
-            custom_variable_string = ""
-            custom_variables.each do |v|
-              custom_variable_string << custom_variable(v[:slot], v[:key], v[:value], v[:scope])
-            end
-          end
           js = <<-HTML
           <!-- Analytical Init: Google -->
           <script type="text/javascript">
@@ -30,6 +23,12 @@ module Analytical
             _gaq.push(['_setDomainName', '#{options[:domain]}']);
             #{"_gaq.push(['_setAllowLinker', true]);" if options[:allow_linker]}
             #{"_gaq.push(['_trackPageLoadTime']);" if options[:track_page_load_time]}
+            if(custom_variables !== 'undefined'){
+              for( custom_variable in custom_variables){
+                _gaq.push(['_setCustomVar', custom_variable.slot, custom_variable.key, custom_variable.value, custom_variable.scope ]);
+              }
+            }
+
           #{custom_variable_string if custom_variable_string}
             _gaq.push(['_trackPageview']);
             (function() {
