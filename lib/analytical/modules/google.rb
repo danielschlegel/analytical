@@ -23,8 +23,11 @@ module Analytical
             _gaq.push(['_setDomainName', '#{options[:domain]}']);
             #{"_gaq.push(['_setAllowLinker', true]);" if options[:allow_linker]}
             #{"_gaq.push(['_trackPageLoadTime']);" if options[:track_page_load_time]}
+            console.log("------------- custom_variables");
+            console.log(custom_variables);
             if(typeof custom_variables !== 'undefined'){
               for( custom_variable in custom_variables){
+                console.log(custom_variable);
                 _gaq.push(['_setCustomVar', custom_variable.slot, custom_variable.key, custom_variable.value, custom_variable.scope ]);
               }
             }
