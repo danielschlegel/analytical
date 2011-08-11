@@ -84,6 +84,7 @@ module Analytical
       js.delete_if{|s| s.blank?}.join("\n")
     end
 
+
     alias_method :head_javascript, :head_append_javascript
 
     def body_prepend_javascript
